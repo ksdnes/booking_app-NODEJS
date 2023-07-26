@@ -1,0 +1,35 @@
+<%-include('header')%>
+<!-- Sidebar -->
+<p>Welcome to the Partner HOME Page</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 bg-light sidebar">
+      <h4>Filters</h4>
+      <!-- Add your filter options here -->
+    </div>
+
+    <!-- Apartment Cards -->
+    <div class="col-md-9">
+      <div class="row">
+        <% partnerApartments.forEach(apartment => { %>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="apartment1.jpg" class="card-img-top" alt="Apartment 1">
+            <div class="card-body">
+              <h5 class="card-title"><%= apartment.name %></h5>
+              <a href="/apartment/<%= loggedInUser %>/edit/<%=apartment.id%>" class="btn btn-primary">EDIT</a>
+              <a href="/apartment/<%= loggedInUser %>/delete/<%=apartment.id%>" class="btn btn-primary">DELETE</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+
+        <div class="col-md-4">
+          <a type="button" href="/apartment/<%= user.id %>/new" class="btn btn-primary">Add new Apartment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') %>

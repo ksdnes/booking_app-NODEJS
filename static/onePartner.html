@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apartment Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="Logo" height="30">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Left Section - List of Pictures -->
+      <div class="col-md-4">
+        <h4>List of Pictures</h4>
+        <ul id="picture-list" class="list-group">
+          <!-- Pictures will be dynamically added here -->
+        </ul>
+        <button id="add-picture-btn" class="btn btn-primary mt-2">Add Picture</button>
+      </div>
+
+      <!-- Right Section - Bookings -->
+      <div class="col-md-8">
+        <h4>Bookings</h4>
+        <table id="booking-table" class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date (From - To)</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Bookings will be dynamically added here -->
+            <tr>
+              <td>1</td>
+              <td>2023-07-01 to 2023-07-07</td>
+              <td><button class="btn btn-danger btn-sm delete-booking-btn">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Edit Apartment Information</h4>
+        <form id="apartment-form">
+          <div class="form-group">
+            <label for="apartment-name">Apartment Name</label>
+            <input type="text" id="apartment-name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="apartment-location">Location</label>
+            <input type="text" id="apartment-location" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+        <h4>Comments</h4>
+        <ul id="comment-list" class="list-group">
+          <!-- Comments will be dynamically added here -->
+          <li class="list-group-item">
+            Comment 1
+            <button class="btn btn-danger btn-sm delete-comment-btn float-right">Delete</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript code for dynamic functionality will go here
+  </script>
+</body>
+</html>

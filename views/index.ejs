@@ -1,0 +1,72 @@
+<%- include('header', { user }) %>
+<script>
+  let url="?";
+  function filterChangeHandler() {
+  const priceFilter=document.getElementById("priceFilter").value;
+  const capacityFilter=document.getElementById("capacityFilter").value;
+  const fromFilter=document.getElementById("fromFilter").value;
+  const toFilter=document.getElementById("toFilter").value;
+    let url=[];
+  if(priceFilter){
+    url.push(`pricefilter=${priceFilter}`)
+  }
+  if(capacityFilter){
+    url.push(`capacityfilter=${capacityFilter}`)
+  }
+  if(fromFilter){
+    url.push(`fromfilter=${fromFilter}`)
+  }
+  if(toFilter){
+    url.push(`tofilter=${toFilter}`)
+  }
+  let finalUrl=url.length>0 ? "?"+url.join("&"): "";
+  window.location.href = finalUrl;
+}
+
+</script>
+<!-- Sidebar -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 bg-light sidebar">
+      <h4>Filters</h4>
+      <form  method="get" action="/">
+        <div class="form-group">
+          <label for="priceFilter">Price less then: </label>
+          <input type="number" value="<%=priceFilter %>" class="form-control" id="priceFilter" name="priceFilter">
+        </div>
+        <div class="form-group">
+          <label for="capacityFilter">Capacity greater:</label>
+          <input type="number" value="<%=capacityFilter%>"  class="form-control" id="capacityFilter" name="capacityFilter">
+        </div>
+        <div class="form-group">
+          <label for="fromFilter">From:</label>
+          <input type="date" value="<%fromFilter%>"  class="form-control" id="fromFilter" name="fromFilter">
+        </div>
+        <div class="form-group">
+          <label for="toFilter">To:</label>
+          <input type="date" value="<%=toFilter%>"  class="form-control" id="toFilter" name="toFilter">
+        </div>
+        <button type="button" onclick="filterChangeHandler()"  class="btn btn-primary">Apply Filters</button>
+        <a type="submit" href="/" class="btn btn-secondary">Remove Filters</a>
+      </form>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <% apartment.forEach(apartment => {  %>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <img src="https://picsum.photos/200/200?"<%=Math.random() %> alt="a cat">
+              <h5 class="card-title"><%= apartment.dataValues.name %></h5>
+              <a href="/apartment/<%= apartment.dataValues.id %>" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('footer') %>
+

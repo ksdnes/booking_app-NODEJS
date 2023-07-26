@@ -1,0 +1,82 @@
+<%-include('header')%>
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+            </div>
+            <div class="carousel-item">
+            </div>
+            <div class="carousel-item">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Apartment Information -->
+      <div class="col-md-6">
+      <h2><%= oneApartment.name%></h2>
+        <p>Host (ID) of the house <%=oneApartment.ownerID  %></p>
+        <p>Maximum capacity of the house (person): <%=oneApartment.maximumCapacity  %></p>
+        <p>Price person/night: <%=oneApartment.price  %></p>
+        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec felis ligula. Nunc blandit
+          tincidunt dapibus.</p>
+        <!-- Add more information as needed -->
+      </div>
+    </div>
+
+    <!-- Booking Box -->
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Booking</h5>
+            <form method="post" action="/apartment/<%=oneApartment.id %>/addbooking">
+              <div class="form-group"><label for="person">Number of Guests:</label>
+               <input type="number" name="persons" class="form-control" id="person" placeholder="Enter the number of guests">
+             </div>
+             <div class="form-group">
+               <label for="dateFrom">From:</label>
+               <input type="date" name="from" class="form-control" id="dateFrom">
+             </div>
+             <div class="form-group">
+               <label for="dateTo">To:</label>
+               <input type="date" name="to" class="form-control" id="dateTo">
+             </div>
+             <button type="submit" class="btn btn-primary">Book</button>
+           </form>
+         </div>
+       </div>
+     </div>
+
+     <!-- Comment Section -->
+     <div class="col-md-6 mt-4">
+       <h5>Comments</h5>
+       <a type="button" href="/apartment/<%=oneApartment.id%>/addcomment" class="btn btn-primary">Add a comment</a>
+       <div class="card">
+         <div class="card-body">
+           
+         </div>
+       </div>
+      <% oneComment.forEach(comment => { %>
+       <div class="card mt-3">
+         <div class="card-body">
+          <%=comment %>
+         </div>
+       </div>
+       <% }) %>
+     </div>
+   </div>
+ </div>
+ <%- include('footer') %>

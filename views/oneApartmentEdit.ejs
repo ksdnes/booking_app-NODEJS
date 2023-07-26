@@ -1,0 +1,48 @@
+<%- include('header') %>
+
+<div class="container">
+  <h2>Edit Apartment</h2>
+  <form action="/apartment/<%= oneApartment.ownerID %>/edit/<%=oneApartment.id %>" method="POST">
+    <div class="form-group">
+      <label for="name">Apartment Name:</label>
+      <input type="text" class="form-control" id="name" name="name" value="<%= oneApartment.name %>">
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" class="form-control" id="price" name="price" value="<%= oneApartment.price %>">
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacity:</label>
+      <input type="number" class="form-control" id="capacity" name="maximumCapacity" value="<%= oneApartment.maximumCapacity %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+
+  <h2>Bookings</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>From - To</th>
+        <th>Persons</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bookings.forEach(function(booking) { %>
+      <tr>
+        <td><%= booking.user_id %></td>
+        <td><%= booking.from %> - <%= booking.to %></td>
+        <td><%= booking.persons %></td>
+        <td>
+          <form action="/apartment/<%= booking.id %>/delete" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('footer') %>
